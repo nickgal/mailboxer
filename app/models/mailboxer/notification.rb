@@ -85,8 +85,8 @@ class Mailboxer::Notification < ActiveRecord::Base
     end
 
     if valid?
-      Mailboxer::MailDispatcher.new(self, temp_receipts).call if send_mail
       save!
+      Mailboxer::MailDispatcher.new(self, temp_receipts).call if send_mail
 
       self.recipients = nil
     end
